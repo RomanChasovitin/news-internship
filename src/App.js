@@ -1,19 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 function App() {
-  const [news, setNews] = useState([])
+  // const [news, setNews] = useState([])
 
-  const getNews = async () => {
-    const response = await fetch(`${process.env.REACT_APP_NEWS_API_URL}/top-headlines?country=us&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`)
-    const { articles } = await response.json()
-    console.log(articles)
-  }
+  // const getNews = async () => {
+  //   const response = await fetch(`${process.env.REACT_APP_NEWS_API_URL}/top-headlines?country=us&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`)
+  //   const { articles } = await response.json()
+  //   console.log(articles)
+  // }
 
-  useEffect(() => {
-    getNews()
-  })
+  // useEffect(() => {
+  //   getNews()
+  // })
 
   return (
     <div className="App">
