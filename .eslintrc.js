@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
+    'import/no-unresolved': 'off',
     'prettier/prettier': [
       'error',
       {
