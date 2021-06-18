@@ -4,6 +4,7 @@ import React from 'react'
 import { ThemeProvider } from '@material-ui/core'
 
 // components
+import { Header } from './components/core/Header'
 import { Sidebar } from './components/core/Sidebar'
 
 // configs
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        <Header />
         <Sidebar />
       </ThemeProvider>
     </div>
