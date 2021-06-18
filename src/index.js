@@ -3,12 +3,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// redux
+import { applyMiddleware, createStore } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+
+// Redux dev-tools
+import { composeWithDevTools } from 'redux-devtools-extension'
+
 // app
 import App from './App'
 
+// reducers
+import { newsReducer } from './store/reducers/news-reducer'
+
+const store = createStore(newsReducer, composeWithDevTools(applyMiddleware(thunk)))
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 )
