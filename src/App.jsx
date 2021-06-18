@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from '@material-ui/core'
-import { theme } from './config/theme'
+import theme from './config/theme'
 
 function App() {
   return (
