@@ -13,6 +13,16 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: false,
+        ignoreDeclarationSort: false,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+        allowSeparatedGroups: true,
+      },
+    ],
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'prettier/prettier': [

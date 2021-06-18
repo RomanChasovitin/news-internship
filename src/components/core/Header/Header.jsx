@@ -15,7 +15,7 @@ const Header = () => {
   const classes = useStyles()
 
   return (
-    <AppBar>
+    <AppBar className={classes.header}>
       <Toolbar>
         <Box flexGrow="1">
           {/* <NavLink to="/"> */}
