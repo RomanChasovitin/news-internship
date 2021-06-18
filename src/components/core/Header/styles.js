@@ -7,6 +7,7 @@ const useStyles = makeStyles(theme => ({
   logo: {
     maxWidth: 50,
     borderRadius: 50,
+    verticalAlign: 'middle',
   },
 }))
 
