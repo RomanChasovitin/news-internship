@@ -1,10 +1,14 @@
 import React from 'react'
 
+// ui
 import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
 import Box from '@material-ui/core/Box'
+import Toolbar from '@material-ui/core/Toolbar'
 
+// components
 import { Search } from './libs/Search'
+
+// styles
 import { useStyles } from './styles'
 
 const Header = () => {
