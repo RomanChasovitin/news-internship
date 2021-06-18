@@ -1,24 +1,29 @@
 import React from 'react'
-import Drawer from '@material-ui/core/Drawer'
+
+// ui
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Toolbar from '@material-ui/core/Toolbar'
-import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
+import Drawer from '@material-ui/core/Drawer'
+import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import MailIcon from '@material-ui/icons/Mail'
-import BusinessIcon from '@material-ui/icons/Business'
-import HealingIcon from '@material-ui/icons/Healing'
-import SportsBaseballIcon from '@material-ui/icons/SportsBaseball'
-import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu'
-import Brightness5Icon from '@material-ui/icons/Brightness5'
-import DesktopMacIcon from '@material-ui/icons/DesktopMac'
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone'
+import Toolbar from '@material-ui/core/Toolbar'
 
+// icons
+import Brightness5Icon from '@material-ui/icons/Brightness5'
+import BusinessIcon from '@material-ui/icons/Business'
+import DesktopMacIcon from '@material-ui/icons/DesktopMac'
+import HealingIcon from '@material-ui/icons/Healing'
+import MailIcon from '@material-ui/icons/Mail'
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone'
+import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu'
+import SportsBaseballIcon from '@material-ui/icons/SportsBaseball'
+
+// styles
 import { useStyles } from './styles'
 
-const mainItem = { url: '/topNews', title: 'Top News', icon: 'Top News', id: '0' }
+const mainItem = { url: '/topNews', title: 'Top News', icon: <MailIcon />, id: '0' }
 const menuItems = [
   {
     url: '/business',
@@ -64,7 +69,7 @@ const menuItems = [
   },
 ]
 
-export default function Sidebar() {
+const Sidebar = () => {
   const classes = useStyles()
 
   return (
@@ -81,9 +86,7 @@ export default function Sidebar() {
         <div className={classes.drawerContainer}>
           <List>
             <ListItem button key={mainItem.id}>
-              <ListItemIcon>
-                <MailIcon />
-              </ListItemIcon>
+              <ListItemIcon>{mainItem.icon}</ListItemIcon>
               <ListItemText primary={mainItem.title} />
             </ListItem>
           </List>
@@ -101,3 +104,5 @@ export default function Sidebar() {
     </div>
   )
 }
+
+export { Sidebar }

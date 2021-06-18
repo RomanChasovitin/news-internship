@@ -1,7 +1,13 @@
 import React from 'react'
+
+// ui
 import { ThemeProvider } from '@material-ui/core'
+
+// components
+import { Sidebar } from './components/core/Sidebar'
+
+// configs
 import { theme } from './config/theme'
-import Sidebar from './components/core/Sidebar/Sidebar'
 
 function App() {
   return (

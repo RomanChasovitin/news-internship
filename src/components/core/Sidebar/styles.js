@@ -1,6 +1,8 @@
+// ui
 import { makeStyles } from '@material-ui/core/styles'
 
-const drawerWidth = 240
+const DRAWER_WIDTH = 240
+
 export const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -9,11 +11,11 @@ export const useStyles = makeStyles(theme => ({
     zIndex: theme.zIndex.drawer + 1,
   },
   drawer: {
-    width: drawerWidth,
+    width: DRAWER_WIDTH,
     flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: DRAWER_WIDTH,
   },
   drawerContainer: {
     overflow: 'auto',
