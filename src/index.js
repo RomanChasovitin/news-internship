@@ -1,23 +1,16 @@
 /* eslint-disable react/jsx-filename-extension */
-
+// React
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// redux
-import { applyMiddleware, createStore } from 'redux'
+// Redux
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
 
-// Redux dev-tools
-import { composeWithDevTools } from 'redux-devtools-extension'
-
-// app
+// App
 import App from './App'
 
-// reducers
-import { newsReducer } from './store/reducers/news-reducer'
-
-const store = createStore(newsReducer, composeWithDevTools(applyMiddleware(thunk)))
+// store
+import { store } from './store'
 
 ReactDOM.render(
   <React.StrictMode>

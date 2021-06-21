@@ -1,7 +1,8 @@
 const initialState = {
-  news: {
-    title: '',
-    text: '',
-  },
+  data: [],
+  success: '',
+  isLoading: '',
+  error: '',
 }
+
 export const newsReducer = (state = initialState) => state
