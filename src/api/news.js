@@ -17,7 +17,7 @@ export const getTopNews = async () => {
   }
 }
 
-export const getQuery = async query => {
+export const getSearchNews = async query => {
   try {
     const { data } = await instance.get(`/everything?q=${query}`)
     return data
@@ -26,7 +26,7 @@ export const getQuery = async query => {
   }
 }
 
-export const getCategory = async category => {
+export const getCategoryNews = async category => {
   try {
     const { data } = await instance.get(`/sources?category=${category}`)
     return data

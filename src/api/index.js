@@ -1,3 +1,3 @@
-import { getCategory, getQuery, getTopNews } from './news'
+import { getCategoryNews, getSearchNews, getTopNews } from './news'
 
-export default { getTopNews, getQuery, getCategory }
+export default { getTopNews, getSearchNews, getCategoryNews }
