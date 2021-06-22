@@ -6,8 +6,8 @@ import ReactDOM from 'react-dom'
 // Redux
 import { Provider } from 'react-redux'
 
-// App
-import App from './App'
+// app
+import { App } from './App'
 
 // store
 import { store } from './store'
