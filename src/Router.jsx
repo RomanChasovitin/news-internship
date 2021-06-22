@@ -7,12 +7,14 @@ import { Route, Switch } from 'react-router-dom'
 import { routes } from './config/routes'
 
 // pages
-import { Category, Home } from './pages'
+import { CategoryPage, Home, NewsDetailsPage, SearchPage } from './pages'
 
 const Router = () => (
   <Switch>
     <Route exact path={routes.home()} component={Home} />
-    <Route path={routes.category()} component={Category} />
+    <Route path={routes.category()} component={CategoryPage} />
+    <Route path={routes.category()} component={NewsDetailsPage} />
+    <Route path={routes.category()} component={SearchPage} />
   </Switch>
 )
 

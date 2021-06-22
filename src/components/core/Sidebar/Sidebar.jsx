@@ -91,7 +91,7 @@ const Sidebar = () => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            <Link to={mainItem.url}>
+            <Link to={mainItem.url} style={{ textDecoration: 'none', color: 'inherit' }}>
               <ListItem button key={mainItem.id}>
                 <ListItemIcon>{mainItem.icon}</ListItemIcon>
                 <ListItemText primary={mainItem.title} />
@@ -101,7 +101,7 @@ const Sidebar = () => {
           <Divider />
           <List>
             {menuItems.map(item => (
-              <Link key={item.id} to={item.url}>
+              <Link key={item.id} to={item.url} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <ListItem button>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.title} />

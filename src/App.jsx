@@ -14,16 +14,28 @@ import { Sidebar } from './components/core/Sidebar'
 // configs
 import { theme } from './config/theme'
 
-const App = () => (
-  <div className="App">
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Header />
-        <Sidebar />
-        <Router />
-      </BrowserRouter>
-    </ThemeProvider>
-  </div>
-)
+// styles
+// eslint-disable-next-line import/named
+import { useStyles } from './styles'
 
-export default App
+const App = () => {
+  const classes = useStyles()
+
+  return (
+    <div className="App">
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <div className={classes.root}>
+            <Header />
+            <Sidebar />
+            <main className={classes.content}>
+              <Router />
+            </main>
+          </div>
+        </BrowserRouter>
+      </ThemeProvider>
+    </div>
+  )
+}
+
+export { App }
