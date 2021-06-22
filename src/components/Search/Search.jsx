@@ -1,9 +1,8 @@
-/* eslint-disable react/destructuring-assignment */
 import React from 'react'
 
-const Search = type => (
+const Search = () => (
   <div>
-    <h1>{type.type}</h1>
+    <h1>Search</h1>
   </div>
 )
 

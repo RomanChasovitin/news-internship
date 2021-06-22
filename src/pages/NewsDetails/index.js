@@ -1,1 +1,1 @@
-export * from './NewsDetailsPage'
+export * from './NewsDetails'

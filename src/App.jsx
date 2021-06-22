@@ -15,7 +15,6 @@ import { Sidebar } from './components/core/Sidebar'
 import { theme } from './config/theme'
 
 // styles
-// eslint-disable-next-line import/named
 import { useStyles } from './styles'
 
 const App = () => {
