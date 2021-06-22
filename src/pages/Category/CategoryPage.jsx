@@ -6,7 +6,7 @@ import { Category } from '../../components/Category'
 
 const CategoryPage = () => {
   const { slug } = useParams()
-  return <Category type={slug} />
+  return <Category slug={slug} />
 }
 
 export { CategoryPage }

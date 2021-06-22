@@ -13,8 +13,8 @@ const Router = () => (
   <Switch>
     <Route exact path={routes.home()} component={Home} />
     <Route path={routes.category()} component={CategoryPage} />
-    <Route path={routes.category()} component={NewsDetailsPage} />
-    <Route path={routes.category()} component={SearchPage} />
+    <Route path={routes.newsDetails()} component={NewsDetailsPage} />
+    <Route path={routes.search()} component={SearchPage} />
   </Switch>
 )
 

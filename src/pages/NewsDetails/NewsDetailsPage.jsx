@@ -6,7 +6,7 @@ import { NewsDetails } from '../../components/NewsDetails'
 
 const NewsDetailsPage = () => {
   const { slug } = useParams()
-  return <NewsDetails type={slug} />
+  return <NewsDetails slug={slug} />
 }
 
 export { NewsDetailsPage }

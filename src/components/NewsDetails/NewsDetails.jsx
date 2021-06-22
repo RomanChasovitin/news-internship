@@ -1,9 +1,16 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 
-const NewsDetails = type => (
+const propTypes = {
+  slug: PropTypes.string.isRequired,
+}
+
+const NewsDetails = ({ slug }) => (
   <div>
-    <h1>{type}</h1>
+    <h1>{slug}</h1>
   </div>
 )
+
+NewsDetails.propTypes = propTypes
 
 export { NewsDetails }
