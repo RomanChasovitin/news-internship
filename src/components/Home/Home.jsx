@@ -4,6 +4,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 
 // ui
+import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 
 // components
@@ -216,8 +217,8 @@ const Home = () => (
   //   setSelectedCountry(country)
   // })
   // selectedCountry={selectedCountry} onCountryPick={onCountryPick}
-  <div>
-    <Typography align="center" variant="h4" component="h2">
+  <Container maxWidth="xlg">
+    <Typography align="center" variant="h4" component="h2" mb={30}>
       Top news
     </Typography>
     <div align="center">
@@ -226,7 +227,7 @@ const Home = () => (
     <Grid container spacing={3}>
       {mockedNews && mockedNews.map(news => <NewsList news={news} />)}
     </Grid>
-  </div>
+  </Container>
 )
 
 export { Home }
