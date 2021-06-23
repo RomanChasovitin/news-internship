@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography'
 // components
 import { CountryPicker } from '../shared/CountryPicker'
 import { Empty } from '../shared/Empty'
+import { LoadError } from '../shared/Error'
 import { NewsList } from '../shared/NewsList'
 
 // actions
@@ -41,14 +42,14 @@ const Home = () => {
 
   return (
     <Container maxWidth={false}>
-      <Typography className={classes.countryPicker} variant="h4" component="h2">
+      <Typography className={classes.topNews} variant="h4" component="h2">
         Top news
       </Typography>
       <div className={classes.countryPicker}>
         <CountryPicker selectedCountry={selectedCountry} onCountryPick={onCountryPick} />
       </div>
       {!isLoading && !news.length && !error && <Empty />}
-      {!isLoading && error && <span>ERROR</span>}
+      {!isLoading && error && <LoadError />}
       {!isLoading && Boolean(news.length) && <NewsList news={news} />}
       <div className={classes.spinnerContainer}>{isLoading && <CircularProgress />}</div>
     </Container>

@@ -7,15 +7,6 @@ const useStyles = makeStyles({
     left: '50%',
     transform: 'translate(-50%)',
   },
-  countryPicker: {
-    textAlign: 'center',
-    marginBottom: '30px',
-  },
-
-  topNews: {
-    textAlign: 'center',
-    marginBottom: '15px',
-  },
 })
 
 export { useStyles }
