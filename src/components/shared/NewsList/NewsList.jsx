@@ -23,20 +23,24 @@ const NewsList = ({ news }) => {
   const classes = useStyles()
 
   return (
-    <Grid item xs={12} sm={6} md={3}>
-      <Card>
-        <CardHeader className={classes.author} subheader={news.author} />
-        <CardHeader className={classes.title} title={news.title} subheader={news.publishedAt} />
-        <CardMedia className={classes.media} image={news.urlToImage} title="Paella dish" />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {news.description}
-          </Typography>
-        </CardContent>
-        <div className={classes.link}>
-          <Link href="http://www.google.com/">Read more...</Link>
-        </div>
-      </Card>
+    <Grid container spacing={3}>
+      {news.map(newsItem => (
+        <Grid item key={newsItem.author + newsItem.title} xs={12} sm={6} md={3}>
+          <Card>
+            <CardHeader className={classes.author} subheader={newsItem.author} />
+            <CardHeader className={classes.title} title={newsItem.title} subheader={newsItem.publishedAt} />
+            <CardMedia className={classes.media} image={newsItem.urlToImage} title="Paella dish" />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {newsItem.description}
+              </Typography>
+            </CardContent>
+            <div className={classes.link}>
+              <Link href="http://www.google.com/">Read more...</Link>
+            </div>
+          </Card>
+        </Grid>
+      ))}
     </Grid>
   )
 }
