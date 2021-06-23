@@ -3,20 +3,21 @@ import * as actionType from './actionTypes'
 // api
 import api from '../../api'
 
-const getNews = articles => ({
-  type: actionType.GET_NEWS,
-  payload: articles,
-})
-const changeLoading = isLoading => ({
-  type: actionType.IS_LOADING,
-  payload: isLoading,
+const getNewsSuccess = success => ({
+  type: actionType.GET_NEWS.SUCCESS,
+  payload: success,
 })
 
-const loadNews = () => dispatch => {
-  api.getTopNews().then(r => {
-    dispatch(getNews(r.articles))
-    dispatch(changeLoading(true))
-  })
+const getNewsFailure = error => ({ type: actionType.GET_NEWS.FAILURE, payload: error })
+
+const getNews = () => async dispatch => {
+  try {
+    const { articles } = await api.getTopNews()
+    dispatch({ type: actionType.GET_NEWS.REQUEST, payload: articles })
+    dispatch(getNewsSuccess(true))
+  } catch (error) {
+    dispatch(getNewsFailure(error))
+  }
 }
 
-export { loadNews }
+export { getNews }

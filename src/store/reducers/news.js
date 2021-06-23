@@ -3,9 +3,8 @@ import * as actionType from '../actions/actionTypes'
 
 const initialState = {
   entities: [],
-  success: null,
-  isLoading: false,
   error: null,
+  isLoading: false,
   pagination: {
     page: 1,
   },
@@ -13,10 +12,12 @@ const initialState = {
 
 export const newsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionType.GET_NEWS:
+    case actionType.GET_NEWS.REQUEST:
       return { ...state, entities: [...action.payload] }
-    case actionType.IS_LOADING:
+    case actionType.GET_NEWS.SUCCESS:
       return { ...state, isLoading: action.payload }
+    case actionType.GET_NEWS.FAILURE:
+      return { ...state, error: action.payload }
     default:
       return state
   }

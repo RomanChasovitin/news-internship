@@ -17,22 +17,29 @@ import Typography from '@material-ui/core/Typography'
 // styles
 import { useStyles } from './styles'
 
-// actionTypes
-import { loadNews } from '../../store/actions'
+// actions
+import { getNews } from '../../store/actions'
+
+// selectors
+import { getEntities, getError, getLoading } from '../../store/selectors'
 
 const Home = () => {
-  const newsState = useSelector(state => state.news)
+  const entities = useSelector(getEntities('news'))
+  const isLoading = useSelector(getLoading('news'))
+  const error = useSelector(getError('news'))
+
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(loadNews())
-  }, [])
+  const loadNews = () => dispatch(getNews())
+
+  useEffect(() => loadNews(), [])
 
   const classes = useStyles()
 
   return (
     <Grid container spacing={2}>
-      {newsState.isLoading ? (
-        newsState.entities.map(item => (
+      {error}
+      {isLoading ? (
+        entities.map(item => (
           <Grid key={item.publishedAt} item xs={12} sm={6} md={3}>
             <Card>
               <CardHeader className={classes.author} subheader={item.author} />

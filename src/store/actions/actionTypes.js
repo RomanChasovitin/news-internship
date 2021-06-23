@@ -1,2 +1,5 @@
-export const GET_NEWS = 'GET_NEWS'
-export const IS_LOADING = 'IS_LOADING'
+export const GET_NEWS = {
+  REQUEST: 'GET_NEWS_REQUEST',
+  SUCCESS: 'GET_NEWS_SUCCESS',
+  FAILURE: 'GET_NEWS_FAILURE',
+}
