@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // redux
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,8 +8,9 @@ import { CircularProgress } from '@material-ui/core'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 
-// // components
+// components
 import { CountryPicker } from '../shared/CountryPicker'
+import { Empty } from '../shared/Empty'
 import { NewsList } from '../shared/NewsList'
 
 // actions
@@ -31,17 +32,22 @@ const Home = () => {
 
   useEffect(() => loadNews(), [])
 
+  const [selectedCountry, setSelectedCountry] = useState(null)
+  const onCountryPick = country => {
+    setSelectedCountry(country)
+  }
+
   const classes = useStyles()
 
   return (
-    <Container maxWidth="xlg">
+    <Container maxWidth={false}>
       <Typography className={classes.countryPicker} variant="h4" component="h2">
         Top news
       </Typography>
       <div className={classes.countryPicker}>
-        <CountryPicker />
+        <CountryPicker selectedCountry={selectedCountry} onCountryPick={onCountryPick} />
       </div>
-      {!isLoading && !news.length && !error && <span>NO DATA</span>}
+      {!isLoading && !news.length && !error && <Empty />}
       {!isLoading && error && <span>ERROR</span>}
       {!isLoading && Boolean(news.length) && <NewsList news={news} />}
       <div className={classes.spinnerContainer}>{isLoading && <CircularProgress />}</div>

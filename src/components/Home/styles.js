@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   },
   countryPicker: {
     textAlign: 'center',
-    marginBottom: '20px',
+    marginBottom: '30px',
   },
 })
 
