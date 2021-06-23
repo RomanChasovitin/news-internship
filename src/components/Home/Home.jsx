@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
 // components
-// import { CountryPicker } from '../shared/CountryPicker'
+import { CountryPicker } from '../shared/CountryPicker'
 import { NewsList } from '../shared/NewsList'
 
 const mockedNews = [
@@ -215,13 +215,15 @@ const Home = () => (
   // const onCountryPick = useCallBack(country => {
   //   setSelectedCountry(country)
   // })
-
+  // selectedCountry={selectedCountry} onCountryPick={onCountryPick}
   <div>
     <Typography align="center" variant="h4" component="h2">
       Top news
     </Typography>
-    {/* <CountryPicker selectedCountry={selectedCountry} onCountryPick={onCountryPick} /> */}
-    <Grid container spacing={2}>
+    <div align="center">
+      <CountryPicker />
+    </div>
+    <Grid container spacing={3}>
       {mockedNews && mockedNews.map(news => <NewsList news={news} />)}
     </Grid>
   </div>
