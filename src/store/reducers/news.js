@@ -13,11 +13,11 @@ const initialState = {
 export const newsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.GET_NEWS.REQUEST:
-      return { ...state, entities: [...action.payload] }
+      return { ...state, isLoading: true }
     case actionType.GET_NEWS.SUCCESS:
-      return { ...state, isLoading: action.payload }
+      return { ...state, entities: [...action.payload.articles], isLoading: false }
     case actionType.GET_NEWS.FAILURE:
-      return { ...state, error: action.payload }
+      return { ...state, error: action.payload, isLoading: false }
     default:
       return state
   }
