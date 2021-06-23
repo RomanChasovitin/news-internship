@@ -12,6 +12,9 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 
+// functions
+import { formatDate, textEllipsis } from '../../../utils'
+
 // styles
 import { useStyles } from './styles'
 
@@ -27,12 +30,21 @@ const NewsList = ({ news }) => {
       {news.map(newsItem => (
         <Grid item key={newsItem.author + newsItem.title} xs={12} sm={6} md={3}>
           <Card>
-            <CardHeader className={classes.author} subheader={newsItem.author} />
-            <CardHeader className={classes.title} title={newsItem.title} subheader={newsItem.publishedAt} />
-            <CardMedia className={classes.media} image={newsItem.urlToImage} title="Paella dish" />
+            <CardMedia
+              className={classes.media}
+              image={
+                newsItem.urlToImage ||
+                'https://universeinform.com/wp-content/uploads/2021/04/Marketplace-Lending-News.jpg'
+              }
+            />
+            <CardHeader className={classes.title} title={textEllipsis(newsItem.title)} />
+            <div className={classes.info}>
+              <CardHeader className={classes.author} subheader={newsItem.author} />
+              <CardHeader className={classes.author} subheader={formatDate(newsItem.publishedAt)} />
+            </div>
             <CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
-                {newsItem.description}
+                {textEllipsis(newsItem.description, 50)}
               </Typography>
             </CardContent>
             <div className={classes.link}>

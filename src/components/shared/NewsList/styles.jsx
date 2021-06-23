@@ -18,6 +18,11 @@ const useStyles = makeStyles(() => ({
     textAlign: 'right',
     padding: '5px',
   },
+  info: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
 }))
 
 export { useStyles }
