@@ -8,9 +8,9 @@ const instance = axios.create({
   },
 })
 
-export const getTopNews = async (us, page) => {
+export const getTopNews = async (country = 'us', page = 1) => {
   try {
-    const { data } = await instance.get(`/top-headlines?country=${us || 'us'}&page=${page || '1'}`)
+    const { data } = await instance.get(`/top-headlines?country=${country}&page=${page}`)
     return data
   } catch (error) {
     return error

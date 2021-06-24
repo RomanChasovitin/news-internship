@@ -19,7 +19,7 @@ import Typography from '@material-ui/core/Typography'
 import { useStyles } from './styles'
 
 // actions
-import { getNews, loadMoreNews } from '../../store/actions'
+import { getNews } from '../../store/actions'
 
 // selectors
 import * as selectors from '../../store/selectors'
@@ -28,8 +28,8 @@ const Home = () => {
   const entities = useSelector(selectors.getEntities('news'))
   const isLoading = useSelector(selectors.getLoading('news'))
   const error = useSelector(selectors.getError('news'))
-  const pageNews = useSelector(selectors.getPage('news'))
-  const totalResults = useSelector(selectors.getTotalResults('news'))
+  const { page } = useSelector(selectors.getPagination('news'))
+  const hasNextPage = useSelector(selectors.getHasNextPage('news'))
 
   const dispatch = useDispatch()
   const loadNews = () => dispatch(getNews())
@@ -40,16 +40,14 @@ const Home = () => {
 
   const classes = useStyles()
 
-  const loadMoreNewsHandler = () => {
-    const nextPage = pageNews + 1
-    dispatch(loadMoreNews(nextPage))
+  const loadMore = () => {
+    const nextPage = page + 1
+    dispatch(getNews(nextPage))
   }
   return (
-    <Grid container spacing={2}>
-      {error}
-      {isLoading ? (
-        <div>Loading data</div>
-      ) : (
+    <>
+      <Grid container spacing={2}>
+        {error}
         <>
           {entities.map(item => (
             <Grid key={item.publishedAt} item xs={12} sm={6} md={3}>
@@ -79,12 +77,15 @@ const Home = () => {
               </Card>
             </Grid>
           ))}
-          <Button onClick={loadMoreNewsHandler} disabled={totalResults === 0} variant="contained" color="primary">
-            Load more
-          </Button>
         </>
+      </Grid>
+      {isLoading && <div>Loading...</div>}
+      {!isLoading && hasNextPage && (
+        <Button onClick={loadMore} variant="contained" color="primary">
+          Load more
+        </Button>
       )}
-    </Grid>
+    </>
   )
 }
 

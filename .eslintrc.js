@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
+    'no-unused-vars': 'warn',
     'sort-imports': [
       'error',
       {
@@ -26,7 +27,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'prettier/prettier': [
-      'error',
+      'warn',
       {
         semi: false,
         singleQuote: true,
