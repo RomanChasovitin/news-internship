@@ -9,7 +9,6 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
-import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 
 // functions
@@ -37,18 +36,17 @@ const NewsList = ({ news }) => {
                 'https://universeinform.com/wp-content/uploads/2021/04/Marketplace-Lending-News.jpg'
               }
             />
-            <CardHeader
-              titleTypographyProps={{ className: classes.title }}
-              // className={classes.title}
-              title={textEllipsis(newsItem.title)}
-            />
+            <CardHeader titleTypographyProps={{ className: classes.title }} title={textEllipsis(newsItem.title)} />
             <CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
-                {textEllipsis(newsItem.description, 70)}
+                {textEllipsis(newsItem.description, 80)}
               </Typography>
             </CardContent>
             <div className={classes.info}>
-              <CardHeader className={classes.author} subheader={newsItem.author} />
+              <CardHeader
+                className={classes.author}
+                subheader={!newsItem.author ? newsItem.source.name : textEllipsis(newsItem.author, 20)}
+              />
               <CardHeader className={classes.author} subheader={formatDate(newsItem.publishedAt)} />
             </div>
           </Card>
