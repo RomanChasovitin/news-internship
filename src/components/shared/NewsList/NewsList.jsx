@@ -51,9 +51,6 @@ const NewsList = ({ news }) => {
               <CardHeader className={classes.author} subheader={newsItem.author} />
               <CardHeader className={classes.author} subheader={formatDate(newsItem.publishedAt)} />
             </div>
-            <div className={classes.link}>
-              <Link href="http://www.google.com/">Read more...</Link>
-            </div>
           </Card>
         </Grid>
       ))}
