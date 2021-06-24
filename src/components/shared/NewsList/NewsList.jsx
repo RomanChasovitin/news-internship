@@ -44,7 +44,7 @@ const NewsList = ({ news }) => {
             />
             <CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
-                {textEllipsis(newsItem.description, 50)}
+                {textEllipsis(newsItem.description, 70)}
               </Typography>
             </CardContent>
             <div className={classes.info}>

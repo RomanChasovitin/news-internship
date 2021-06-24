@@ -4,6 +4,7 @@ const useStyles = makeStyles({
   spinnerContainer: {
     display: 'flex',
     justifyContent: 'center',
+    padding: '30px 0',
   },
   countryPicker: {
     textAlign: 'center',

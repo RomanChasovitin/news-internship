@@ -59,7 +59,7 @@ const Home = () => {
       </div>
       {!isLoading && !news.length && !error && <Empty />}
       {!isLoading && error && <LoadError />}
-      {!isLoading && Boolean(news.length) && <NewsList news={news} />}
+      <NewsList news={news} />
       <div className={classes.spinnerContainer}>
         {!isLoading && hasNextPage && (
           <Button onClick={loadMore} variant="contained" color="primary">
