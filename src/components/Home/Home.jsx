@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // ui
-import { CircularProgress } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 
@@ -27,11 +28,15 @@ const Home = () => {
   const news = useSelector(selectors.getEntities('news'))
   const isLoading = useSelector(selectors.getLoading('news'))
   const error = useSelector(selectors.getError('news'))
+  const { page } = useSelector(selectors.getPagination('news'))
+  const hasNextPage = useSelector(selectors.getHasNextPage('news'))
 
   const dispatch = useDispatch()
   const loadNews = () => dispatch(getNews())
 
-  useEffect(() => loadNews(), [])
+  useEffect(() => {
+    loadNews()
+  }, [])
 
   const [selectedCountry, setSelectedCountry] = useState(null)
   const onCountryPick = country => {
@@ -40,6 +45,10 @@ const Home = () => {
 
   const classes = useStyles()
 
+  const loadMore = () => {
+    const nextPage = page + 1
+    dispatch(getNews(nextPage))
+  }
   return (
     <Container maxWidth={false}>
       <Typography className={classes.topNews} variant="h4" component="h2">
@@ -51,7 +60,14 @@ const Home = () => {
       {!isLoading && !news.length && !error && <Empty />}
       {!isLoading && error && <LoadError />}
       {!isLoading && Boolean(news.length) && <NewsList news={news} />}
-      <div className={classes.spinnerContainer}>{isLoading && <CircularProgress />}</div>
+      <div className={classes.spinnerContainer}>
+        {!isLoading && hasNextPage && (
+          <Button onClick={loadMore} variant="contained" color="primary">
+            Load more
+          </Button>
+        )}
+        {isLoading && <CircularProgress />}
+      </div>
     </Container>
   )
 }
