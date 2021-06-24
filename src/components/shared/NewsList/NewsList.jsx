@@ -45,7 +45,7 @@ const NewsList = ({ news }) => {
             <div className={classes.info}>
               <CardHeader
                 className={classes.author}
-                subheader={!newsItem.author ? newsItem.source.name : textEllipsis(newsItem.author, 20)}
+                subheader={!newsItem.author ? newsItem.source.name : textEllipsis(newsItem.author, 12)}
               />
               <CardHeader className={classes.author} subheader={formatDate(newsItem.publishedAt)} />
             </div>

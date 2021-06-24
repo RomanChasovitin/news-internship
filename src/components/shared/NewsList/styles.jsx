@@ -5,7 +5,6 @@ const useStyles = makeStyles(theme => ({
     padding: '16px',
     paddingTop: '10px',
     paddingBottom: '0',
-    textAlign: 'center',
   },
   title: {
     textAlign: 'left',

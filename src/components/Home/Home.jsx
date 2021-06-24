@@ -31,6 +31,8 @@ const Home = () => {
   const { page } = useSelector(selectors.getPagination('news'))
   const hasNextPage = useSelector(selectors.getHasNextPage('news'))
 
+  const [republic, setCountry] = useState('')
+
   const dispatch = useDispatch()
   const loadNews = () => dispatch(getNews())
 
@@ -38,24 +40,27 @@ const Home = () => {
     loadNews()
   }, [])
 
-  const [selectedCountry, setSelectedCountry] = useState(null)
   const onCountryPick = country => {
-    setSelectedCountry(country)
+    setCountry(country)
+    dispatch(getNews(country, page))
   }
 
   const classes = useStyles()
 
   const loadMore = () => {
     const nextPage = page + 1
-    dispatch(getNews(nextPage))
+    dispatch(getNews(republic, nextPage))
   }
+
   return (
     <Container maxWidth={false}>
       <Typography className={classes.topNews} variant="h4" component="h2">
         Top news
       </Typography>
       <div className={classes.countryPicker}>
-        <CountryPicker selectedCountry={selectedCountry} onCountryPick={onCountryPick} />
+        Search by country:
+        <p />
+        <CountryPicker onCountryPick={onCountryPick} />
       </div>
       {!isLoading && !news.length && !error && <Empty />}
       {!isLoading && error && <LoadError />}
