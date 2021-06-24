@@ -3,6 +3,9 @@ import React from 'react'
 // router
 import { Route, Switch } from 'react-router-dom'
 
+// FullNews
+import { FullNews } from './components/FullNews'
+
 // routes
 import { routes } from './config/routes'
 
@@ -14,6 +17,7 @@ const Router = () => (
     <Route exact path={routes.home()} component={HomePage} />
     <Route path={routes.category()} component={CategoryPage} />
     <Route path={routes.newsDetails()} component={NewsDetailsPage} />
+    <Route path={routes.fullNews()} component={FullNews} />
     <Route path={routes.search()} component={SearchPage} />
   </Switch>
 )

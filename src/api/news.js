@@ -34,3 +34,12 @@ export const getCategoryNews = async category => {
     return error
   }
 }
+
+export const getFullArticle = async (title = 'news') => {
+  try {
+    const { data } = await instance.get(`/everything?qInTitle=${title}`)
+    return data
+  } catch (error) {
+    return error
+  }
+}

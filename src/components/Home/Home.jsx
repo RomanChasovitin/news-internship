@@ -12,8 +12,10 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
-import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
+
+// react-router-dom
+import { Link } from 'react-router-dom'
 
 // styles
 import { useStyles } from './styles'
@@ -23,6 +25,9 @@ import { getNews } from '../../store/actions'
 
 // selectors
 import * as selectors from '../../store/selectors'
+
+// base64
+import { fromToId } from '../../utils/transformBase64'
 
 const Home = () => {
   const entities = useSelector(selectors.getEntities('news'))
@@ -44,6 +49,7 @@ const Home = () => {
     const nextPage = page + 1
     dispatch(getNews(nextPage))
   }
+
   return (
     <>
       <Grid container spacing={2}>
@@ -72,7 +78,7 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <div className={classes.link}>
-                  <Link href="http://www.google.com/">Read more...</Link>
+                  <Link to={`article/${fromToId(item.title)}`}>Read more...</Link>
                 </div>
               </Card>
             </Grid>
@@ -88,5 +94,4 @@ const Home = () => {
     </>
   )
 }
-
 export { Home }
