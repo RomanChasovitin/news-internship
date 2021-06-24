@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   author: {
     padding: '16px',
     paddingTop: '10px',
@@ -8,7 +8,11 @@ const useStyles = makeStyles(() => ({
     textAlign: 'center',
   },
   title: {
-    textAlign: 'center',
+    textAlign: 'left',
+    height: '32px',
+    overflow: 'hidden',
+    fontSize: theme.typography.pxToRem(18),
+    fontWeight: theme.typography.fontWeightMedium,
   },
   media: {
     height: 0,

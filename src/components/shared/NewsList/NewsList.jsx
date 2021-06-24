@@ -37,16 +37,20 @@ const NewsList = ({ news }) => {
                 'https://universeinform.com/wp-content/uploads/2021/04/Marketplace-Lending-News.jpg'
               }
             />
-            <CardHeader className={classes.title} title={textEllipsis(newsItem.title)} />
-            <div className={classes.info}>
-              <CardHeader className={classes.author} subheader={newsItem.author} />
-              <CardHeader className={classes.author} subheader={formatDate(newsItem.publishedAt)} />
-            </div>
+            <CardHeader
+              titleTypographyProps={{ className: classes.title }}
+              // className={classes.title}
+              title={textEllipsis(newsItem.title)}
+            />
             <CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
                 {textEllipsis(newsItem.description, 50)}
               </Typography>
             </CardContent>
+            <div className={classes.info}>
+              <CardHeader className={classes.author} subheader={newsItem.author} />
+              <CardHeader className={classes.author} subheader={formatDate(newsItem.publishedAt)} />
+            </div>
             <div className={classes.link}>
               <Link href="http://www.google.com/">Read more...</Link>
             </div>
