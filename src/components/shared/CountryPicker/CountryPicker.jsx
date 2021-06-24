@@ -13,6 +13,7 @@ const CountryPicker = ({ onCountryPick }) => (
   <ButtonGroup color="primary" aria-label="outlined primary button group">
     {countries.map(item => (
       <Button
+        key={item}
         onClick={() => {
           onCountryPick(item)
         }}
