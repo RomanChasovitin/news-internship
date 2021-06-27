@@ -31,7 +31,7 @@ const Home = () => {
   const { page } = useSelector(selectors.getPagination('news'))
   const hasNextPage = useSelector(selectors.getHasNextPage('news'))
 
-  const [republic, setCountry] = useState('')
+  const [republic, setCountry] = useState('us')
 
   const dispatch = useDispatch()
   const loadNews = () => dispatch(getNews())
