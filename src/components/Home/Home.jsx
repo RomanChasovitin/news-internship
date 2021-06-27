@@ -58,8 +58,7 @@ const Home = () => {
         Top news
       </Typography>
       <div className={classes.countryPicker}>
-        Search by country:
-        <p />
+        <p>Search by country:</p>
         <CountryPicker onCountryPick={onCountryPick} />
       </div>
       {!isLoading && !news.length && !error && <Empty />}
