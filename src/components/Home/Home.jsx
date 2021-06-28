@@ -28,29 +28,28 @@ const Home = () => {
   const news = useSelector(selectors.getEntities('news'))
   const isLoading = useSelector(selectors.getLoading('news'))
   const error = useSelector(selectors.getError('news'))
-  const { page } = useSelector(selectors.getPagination('news'))
+  const pagination = useSelector(selectors.getPagination('news'))
   const hasNextPage = useSelector(selectors.getHasNextPage('news'))
 
-  const [republic, setCountry] = useState('us')
+  const [country, setCountry] = useState('us')
 
   const dispatch = useDispatch()
-  const loadNews = () => dispatch(getNews())
+  const loadNews = (selectedCountry, page) => dispatch(getNews(selectedCountry, page))
 
   useEffect(() => {
-    loadNews()
-  }, [])
+    loadNews(country, 1)
+  }, [country])
 
-  const onCountryPick = country => {
-    setCountry(country)
-    dispatch(getNews(country, page))
+  const onCountryPick = selectedCountry => {
+    setCountry(selectedCountry)
+  }
+
+  const loadMore = () => {
+    const nextPage = pagination.page + 1
+    loadNews(country, nextPage)
   }
 
   const classes = useStyles()
-
-  const loadMore = () => {
-    const nextPage = page + 1
-    dispatch(getNews(republic, nextPage))
-  }
 
   return (
     <Container maxWidth={false}>
@@ -59,7 +58,7 @@ const Home = () => {
       </Typography>
       <div className={classes.countryPicker}>
         <p>Search by country:</p>
-        <CountryPicker onCountryPick={onCountryPick} />
+        <CountryPicker selectedCountry={country} onCountryPick={onCountryPick} />
       </div>
       {!isLoading && !news.length && !error && <Empty />}
       {!isLoading && error && <LoadError />}

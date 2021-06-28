@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: theme.typography.pxToRem(18),
     fontWeight: theme.typography.fontWeightMedium,
   },
+  description: {
+    height: '40px',
+  },
   media: {
     height: 0,
     paddingTop: '56.25%',

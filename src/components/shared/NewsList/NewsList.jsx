@@ -40,8 +40,8 @@ const NewsList = ({ news }) => {
               />
               <CardHeader titleTypographyProps={{ className: classes.title }} title={textEllipsis(newsItem.title)} />
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {textEllipsis(newsItem.description, 80)}
+                <Typography className={classes.description} variant="body2" color="textSecondary" component="p">
+                  {textEllipsis(newsItem.description, 80) || 'No description'}
                 </Typography>
               </CardContent>
               <div className={classes.info}>
