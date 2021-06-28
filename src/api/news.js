@@ -37,8 +37,10 @@ export const getCategoryNews = async category => {
 
 export const getArticleDetails = async (title = 'news') => {
   try {
-    const { data } = await instance.get(`/everything?qInTitle="${title}"`)
-    return data
+    const {
+      data: { articles },
+    } = await instance.get(`/everything?qInTitle="${title}"`)
+    return articles[0]
   } catch (error) {
     return error
   }

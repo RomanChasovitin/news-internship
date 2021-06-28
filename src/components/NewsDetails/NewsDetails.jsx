@@ -17,8 +17,8 @@ const NewsDetails = ({ slug }) => {
 
   const loadFullArticle = async () => {
     setIsLoadingArticle(true)
-    const { articles } = await getArticleDetails(fromIdToString(slug))
-    setArticle(articles[0])
+    const articleData = await getArticleDetails(fromIdToString(slug))
+    setArticle(articleData)
     setIsLoadingArticle(false)
   }
   useEffect(() => {
