@@ -35,9 +35,9 @@ export const getCategoryNews = async category => {
   }
 }
 
-export const getFullArticle = async (title = 'news') => {
+export const getArticleDetails = async (title = 'news') => {
   try {
-    const { data } = await instance.get(`/everything?qInTitle=${title}`)
+    const { data } = await instance.get(`/everything?qInTitle="${title}"`)
     return data
   } catch (error) {
     return error
