@@ -39,7 +39,7 @@ export const getArticleDetails = async (title = 'news') => {
   try {
     const {
       data: { articles },
-    } = await instance.get(`/everything?qInTitle="${title}"`)
+    } = await instance.get(`/everything?qInTitle=${title}`)
     return articles[0]
   } catch (error) {
     return error
