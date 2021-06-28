@@ -12,8 +12,13 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
-import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
+
+// react-router-dom
+import { Link } from 'react-router-dom'
+
+// routes
+import { routes } from '../../config/routes'
 
 // styles
 import { useStyles } from './styles'
@@ -23,6 +28,9 @@ import { getNews } from '../../store/actions'
 
 // selectors
 import * as selectors from '../../store/selectors'
+
+// base 64
+import { fromStringToId } from '../../utils/transformBase64/transformStringToId'
 
 const Home = () => {
   const entities = useSelector(selectors.getEntities('news'))
@@ -42,8 +50,9 @@ const Home = () => {
 
   const loadMore = () => {
     const nextPage = page + 1
-    dispatch(getNews(nextPage))
+    dispatch(getNews('us', nextPage))
   }
+
   return (
     <>
       <Grid container spacing={2}>
@@ -53,11 +62,7 @@ const Home = () => {
             <Grid key={item.publishedAt} item xs={12} sm={6} md={3}>
               <Card>
                 <CardHeader className={classes.author} subheader={item.author} />
-                <CardHeader
-                  className={classes.title}
-                  title="Shrimp and Chorizo Paella"
-                  subheader="September 14, 2016"
-                />
+                <CardHeader className={classes.title} title={item.title} subheader="September 14, 2016" />
                 <CardMedia
                   className={classes.media}
                   image={
@@ -72,7 +77,7 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <div className={classes.link}>
-                  <Link href="http://www.google.com/">Read more...</Link>
+                  <Link to={routes.newsDetails(fromStringToId(item.title))}>Read more...</Link>
                 </div>
               </Card>
             </Grid>
@@ -88,5 +93,4 @@ const Home = () => {
     </>
   )
 }
-
 export { Home }
