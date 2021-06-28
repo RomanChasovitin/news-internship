@@ -57,7 +57,7 @@ const Home = () => {
         Top news
       </Typography>
       <div className={classes.countryPicker}>
-        <p>Search by country:</p>
+        <p>Filter by country:</p>
         <CountryPicker selectedCountry={country} onCountryPick={onCountryPick} />
       </div>
       {!isLoading && !news.length && !error && <Empty />}
@@ -74,5 +74,4 @@ const Home = () => {
     </Container>
   )
 }
-
 export { Home }
