@@ -12,6 +12,8 @@ const initialState = {
   },
 }
 
+const getArr = (articles, sources) => articles || sources
+
 export const newsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.GET_NEWS.REQUEST:
@@ -19,7 +21,7 @@ export const newsReducer = (state = initialState, action) => {
     case actionType.GET_NEWS.SUCCESS:
       return {
         ...state,
-        entities: [...state.entities, ...action.payload.articles],
+        entities: [...state.entities, ...getArr(action.payload.articles, action.payload.sources)],
         pagination: {
           ...state.pagination,
           totalResults: action.payload.totalResults,

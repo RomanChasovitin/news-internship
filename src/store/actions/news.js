@@ -22,4 +22,15 @@ const getNews =
     }
   }
 
-export { getNews }
+const getCategoryNews =
+  (slug = 'business', country = 'us', page = 1) =>
+  async dispatch => {
+    dispatch({ type: actionType.GET_NEWS.REQUEST, payload: { page } })
+    try {
+      const payload = await api.getCategoryNews(slug, country, page)
+      dispatch(getNewsSuccess(payload))
+    } catch (error) {
+      dispatch(getNewsFailure(error))
+    }
+  }
+export { getNews, getCategoryNews }

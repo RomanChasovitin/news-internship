@@ -26,9 +26,9 @@ export const getSearchNews = async query => {
   }
 }
 
-export const getCategoryNews = async category => {
+export const getCategoryNews = async (category = 'business', country = 'us', page = 1) => {
   try {
-    const { data } = await instance.get(`/sources?category=${category}`)
+    const { data } = await instance.get(`/sources?category=${category}&country=${country}&page=${page}`)
     return data
   } catch (error) {
     return error
