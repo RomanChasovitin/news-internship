@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -10,14 +9,11 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
+import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
-
-// routes
-import { routes } from '../../../config/routes'
 
 // functions
 import { formatDate, textEllipsis } from '../../../utils'
-import { fromStringToId } from '../../../utils/transformBase64/transformStringToId'
 
 // styles
 import { useStyles } from './styles'
@@ -33,7 +29,7 @@ const NewsList = ({ news }) => {
     <Grid container spacing={3}>
       {news.map(newsItem => (
         <Grid item key={newsItem.author + newsItem.title} xs={12} sm={6} md={3}>
-          <Link to={routes.newsDetails(fromStringToId(newsItem.title))}>
+          <Link href={newsItem.url} target="_blank">
             <Card>
               <CardMedia
                 className={classes.media}
