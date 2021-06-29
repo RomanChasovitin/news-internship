@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
+// base 64
+import { decode } from 'js-base64'
+
 // api
 import { getArticleDetails } from '../../api/news'
 
-// base64
-import { fromIdToString } from '../../utils/transformBase64/transformIdToString'
-
 const propTypes = {
   slug: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 }
 
-const NewsDetails = ({ slug }) => {
+const NewsDetails = ({ slug, url }) => {
   const [article, setArticle] = useState()
   const [isLoadingArticle, setIsLoadingArticle] = useState(false)
 
   const loadFullArticle = async () => {
     setIsLoadingArticle(true)
-    const articleData = await getArticleDetails(fromIdToString(slug))
+    const articleData = await getArticleDetails(decode(slug))
+    if (!articleData && url) window.location.href = decode(url)
     setArticle(articleData)
     setIsLoadingArticle(false)
   }
