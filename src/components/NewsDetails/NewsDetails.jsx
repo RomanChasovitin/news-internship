@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 // material ui
-import { Grid, Typography } from '@material-ui/core'
+import { Grid, Link, Typography } from '@material-ui/core'
 
 // api
 import { getArticleDetails } from '../../api/news'
@@ -59,8 +59,14 @@ const NewsDetails = ({ slug }) => {
             dangerouslySetInnerHTML={{ __html: article.description }}
           />
           <Typography className={classes.boxMargin} variant="h5">
+            {article.url}
+          </Typography>
+          <Typography className={classes.boxMargin} variant="h5">
             {article.content}
           </Typography>
+          <Link href={article.url} variant="h5" target="_blank" className={classes.boxMargin}>
+            Source
+          </Link>
           <div className={classes.info}>
             <Typography variant="h5">Author: {article.author}</Typography>
             <Typography variant="h5">Publish date: {formatDate(article.publishedAt)}</Typography>

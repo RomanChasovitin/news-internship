@@ -6,6 +6,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
   },
   boxMargin: {
+    display: 'inline-block',
     marginBottom: '20px',
   },
   boxImg: {
