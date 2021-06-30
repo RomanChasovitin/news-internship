@@ -15,7 +15,12 @@ const initialState = {
 export const newsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.GET_NEWS.REQUEST:
-      return { ...state, isLoading: true, entities: action.payload.page === 1 ? [] : state.entities }
+      return {
+        ...state,
+        isLoading: true,
+        entities: action.payload.page === 1 ? [] : state.entities,
+        category: action.payload.slug,
+      }
     case actionType.GET_NEWS.SUCCESS:
       return {
         ...state,
