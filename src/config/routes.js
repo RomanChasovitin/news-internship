@@ -1,7 +1,7 @@
 const routes = {
   home: () => '/',
   category: (slug = ':slug') => `/category/${slug}`,
-  search: () => '/search',
+  search: (slug = ':slug') => `/search/${slug}`,
 }
 
 export { routes }

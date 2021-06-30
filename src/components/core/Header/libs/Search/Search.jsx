@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
+// react-router-dom
+import { useHistory } from 'react-router-dom'
+
 // ui
 import Button from '@material-ui/core/Button'
 import InputBase from '@material-ui/core/InputBase'
@@ -15,6 +18,8 @@ import { useStyles } from './styles'
 const Search = () => {
   const [inputData, setInputData] = useState('')
 
+  const history = useHistory()
+
   const MIN_SEARCH_LENGTH = 3
   const ENTER_KEY = 'Enter'
 
@@ -25,6 +30,7 @@ const Search = () => {
   const handleKeyPress = e => {
     if (e.key === ENTER_KEY && checkLength(inputData)) {
       dispatch(getTopSearchNews(inputData))
+      history.push(`/search/${inputData}`)
     }
   }
 
