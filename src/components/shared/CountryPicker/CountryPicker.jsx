@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const propTypes = {
-  onCountryPick: PropTypes.string.isRequired,
+  onCountryPick: PropTypes.func.isRequired,
   selectedCountry: PropTypes.oneOf(['us', 'ru', 'cn', 'nz', 'au']).isRequired,
 }
 

@@ -19,7 +19,7 @@ import { formatDate, textEllipsis } from '../../../utils'
 import { useStyles } from './styles'
 
 const propTypes = {
-  news: PropTypes.string.isRequired,
+  news: PropTypes.instanceOf(Array).isRequired,
 }
 
 const NewsList = ({ news }) => {
