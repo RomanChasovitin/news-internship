@@ -19,6 +19,9 @@ import { Empty } from '../shared/Empty'
 import { LoadError } from '../shared/Error'
 import { NewsList } from '../shared/NewsList'
 
+// utils
+import { captionToUpperCase } from '../../utils/captionToUpperCase'
+
 // styles
 import { useStyles } from './styles'
 
@@ -39,7 +42,6 @@ const Category = ({ slug }) => {
 
   const loadNews = (category, selectedCountry, page) => dispatch(getCategoryNews(category, selectedCountry, page))
 
-  const captionToUpperCase = title => title.charAt(0).toUpperCase() + title.slice(1)
   useEffect(() => {
     loadNews(slug, country, 1)
   }, [slug, country])
