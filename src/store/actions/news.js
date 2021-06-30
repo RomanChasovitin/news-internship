@@ -22,4 +22,16 @@ const getNews =
     }
   }
 
-export { getNews }
+const getTopSearchNews =
+  (query = '', page = 1) =>
+  async dispatch => {
+    dispatch({ type: actionType.GET_NEWS.REQUEST, payload: { query, page } })
+    try {
+      const payload = await api.getSearchNews(query, page)
+      dispatch(getNewsSuccess(payload))
+    } catch (error) {
+      dispatch(getNewsFailure(error))
+    }
+  }
+
+export { getNews, getTopSearchNews }

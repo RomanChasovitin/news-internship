@@ -17,9 +17,9 @@ export const getTopNews = async (country = 'us', page = 1) => {
   }
 }
 
-export const getSearchNews = async query => {
+export const getSearchNews = async (query, page) => {
   try {
-    const { data } = await instance.get(`/everything?q=${query}`)
+    const { data } = await instance.get(`/everything?q=${query}&page=${page}`)
     return data
   } catch (error) {
     return error
